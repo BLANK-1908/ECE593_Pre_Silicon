@@ -1,12 +1,12 @@
 class omon;
   packet pkt;
   out_packet opkt;
-  virtual mcp_inst.tb_mon vif;
-  mailbox #(packet) mbx;
+  virtual mcp.tb_mon vif;
+  mailbox #(out_packet) mbx;
   
   bit [31:0] no_of_pkts_rcvd;
   
-  function new(input mailbox#(packet) mbx_arg, input virtual mcp_inst.tb_mon vif_arg);
+  function new(input mailbox#(packet) mbx_arg, input virtual mcp.tb_mon vif_arg);
     this.mbx=mbx_arg;
     this.vif = vif_arg;
   endfunction
@@ -16,7 +16,7 @@ class omon;
     forever begin
       @(posedge vif.mcb.done);
       no_of_pkts_rcvd++;
-      $display("[iMon] Started collecting packet %0d at time=%0t ",no_of_pkts_recvd,$time); 
+      $display("[oMon] Started collecting packet %0d at time=%0t ",no_of_pkts_rcvd,$time); 
       opkt.con_pkt(vif.mcb.mem_out,vif.mcb.reg_out);
       
       end
