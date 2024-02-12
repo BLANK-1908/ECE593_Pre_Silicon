@@ -31,14 +31,14 @@ scoreboard scb;
   mailbox #(out_packet) mbx_oMon_scb;
 
 //Section E6 : : Define virtual interface handles required for Driver,iMonitor and oMonitor
-virtual mcp_inst.tb_mod_port vif;
-virtual mcp_inst.tb_mon      vif_mon_in;
-virtual mcp_inst.tb_mon      vif_mon_out;
+virtual mcp.tb_modport vif;
+virtual mcp.tb_mon      vif_mon_in;
+virtual mcp.tb_mon      vif_mon_out;
 
 //Section E7: Define custom constructor with virtual interface handles as arguments and pkt count
-function new (input virtual mcp_inst.tb_mod_port vif_in,
-              input virtual mcp_inst.tb_mon  vif_mon_in,
-              input virtual mcp_inst.tb_mon  vif_mon_out,
+function new (input virtual mcp.tb_modport vif_in,
+              input virtual mcp.tb_mon  vif_mon_in,
+              input virtual mcp.tb_mon  vif_mon_out,
               input bit [31:0] no_of_pkts);
 this.vif= vif_in;
 this.vif_mon_in=vif_mon_in;
