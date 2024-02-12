@@ -2,7 +2,9 @@
 typedef enum {IDLE,RESET,STIMULUS} pkt_type_t;
 
 class packet;
-  rand bit [17:0] instr_pkt; 
+  rand bit [27:0] instr_pkt1;
+  rand bit [27:0] instr_pkt2;
+  rand bit [27:0] instr_pkt3;
   pkt_type_t kind;
   bit [7:0] reset_cycle;
   
@@ -12,7 +14,9 @@ $display("[Error] NULL handle passed to copy method");
 $finish;
 end
     else begin
-      this.instr_pkt = to_cp.instr_pkt;
+      this.instr_pkt1 = to_cp.instr_pkt1;
+      this.instr_pkt2 = to_cp.instr_pkt2;
+      this.instr_pkt3 = to_cp.instr_pkt3;
       this.kind = to_cp.kind;
       this.reset_cycle = to_cp.reset_cycle;
     end
