@@ -13,14 +13,14 @@ class generator;
 task run ();
   bit [31:0] pkt_id;
   packet gen_pkt;
-  
+  $display("pkt_cnt =%d",pkt_cnt);
   gen_pkt = new;
   
-  gen_pkt.kind = RESET;
+  /*gen_pkt.kind = RESET;
   gen_pkt.reset_cycle=5;
   $display("[Generator] Sending %0s packet %0d to driver at time=%0t",gen_pkt.kind.name(),pkt_id,$time);
   
-  mbx.put(gen_pkt);
+  mbx.put(gen_pkt);*/
   
   repeat(pkt_cnt) begin
     pkt_id++;
