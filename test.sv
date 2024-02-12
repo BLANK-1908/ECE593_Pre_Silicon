@@ -5,18 +5,18 @@
 class base_test;
 
 //Section T3 : Define Stimulus packet count
-bit [31:0] no_of_pkts;
+  bit [31:0] no_of_pkts=5;
 
 //Section T4 : : Define virtual interface handles required for Driver,iMonitor and oMonitor
-virtual mcp_inst.tb_mod_port vif;
-virtual mcp_inst.tb_mon vif_mon_in;
-virtual mcp_inst.tb_mon vif_mon_out;
+virtual mcp.tb_modport vif;
+virtual mcp.tb_mon vif_mon_in;
+virtual mcp.tb_mon vif_mon_out;
 
 //Section T5 : : Define enviroment class handle
 environment env;
 
 //Section T6: Define custom constructor with virtual interface handles as arguments.
-function new (input virtual mcp_inst.tb_mod_port vif_in,input virtual mcp_inst.tb_mon vif_mon_in,input virtual mcp_inst.tb_mon vif_mon_out);
+function new (input virtual mcp.tb_modport vif_in,input virtual mcp.tb_mon vif_mon_in,input virtual mcp.tb_mon vif_mon_out);
 
 this.vif = vif_in;
 this.vif_mon_in = vif_mon_in;
