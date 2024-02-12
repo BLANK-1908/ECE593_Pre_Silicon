@@ -51,9 +51,9 @@ end
 	//Section S12: Print enough information (for debug) when packet does NOT Match
 	$display("[Scoreboard] ERROR :: Packet %0d Not_Matched at time=%0t",total_pkts_recvd,$time); 
 	$display("[Scoreboard] *** Expected Packet to DUT****");
-	ref_pkt.print();
+	//ref_pkt.print();
 	$display("[Scoreboard] *** Received Packet From DUT****");
-	got_pkt.print();
+	//got_pkt.print();
 end
 end
 $display("[Scoreboard] run ended at time=%0t",$time); 
