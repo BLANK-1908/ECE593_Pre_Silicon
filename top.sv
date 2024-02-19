@@ -1,9 +1,11 @@
 interface mcp(input clk);
-  logic [27:0] instr1;
-  logic [27:0] instr2;
-  logic [27:0] instr3;
+  logic [17:0] instr1;
+  logic [17:0] instr2;
+  logic [17:0] instr3;
   logic [7:0] mem_out;
-  logic [7:0] reg_out;
+  logic [7:0] reg_out1;
+  logic [7:0] reg_out2;
+  logic [7:0] reg_out3;
   logic rst;
   logic start1; 
   logic start2; 
@@ -16,7 +18,9 @@ interface mcp(input clk);
   output instr2;
   output instr3;
   input mem_out;
-  input reg_out;
+  input reg_out1;
+    input reg_out2;
+    input reg_out3;
   output rst;
   output start1; 
   output start2; 
@@ -29,7 +33,9 @@ interface mcp(input clk);
   input instr2;
   input instr3;
   input mem_out;
-  input reg_out;
+  input reg_out1;
+    input reg_out2;
+    input reg_out3;
   input rst;
   input start1; 
   input start2; 
@@ -43,6 +49,7 @@ interface mcp(input clk);
   
 
 module top;
+ 
   
   logic clk;
   
@@ -53,7 +60,11 @@ module top;
   
   core dut_inst(.clk(clk),
 .done(mcp_inst.done), 
-.rst_n(mcp_inst.rst), 
+.rst_n(mcp_inst.rst),
+                .mem_out(mcp_inst.mem_out),
+                .reg_out1(mcp_inst.reg_out1),
+                .reg_out2(mcp_inst.reg_out2),
+                .reg_out3(mcp_inst.reg_out3),
                            .start1(mcp_inst.start1),
                            .start2(mcp_inst.start2),
                            .start3(mcp_inst.start3),

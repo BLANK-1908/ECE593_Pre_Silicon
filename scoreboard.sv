@@ -1,3 +1,4 @@
+import filepackage::*;
 class scoreboard;
 
 //Section S1: Define virtual interface, mailbox and packet class handles
@@ -15,8 +16,8 @@ out_packet   got_pkt;
   bit [31:0] m_mismatched;
 
 //Section S4: Define custom constructor with mailbox handles as arguments
-function new (input mailbox #(packet) mbx_in,
-              input mailbox #(packet) mbx_out);
+  function new (input mailbox #(out_packet) mbx_in,
+                input mailbox #(out_packet) mbx_out);
 
 this.mbx_in  = mbx_in;
 this.mbx_out = mbx_out;
@@ -28,7 +29,8 @@ $display("[Scoreboard] run started at time=%0t",$time);
 while(1) begin
 //Section S6: Wait on mailbox and get a copy of transaction object from mailbox using peek method.
  mbx_in.peek(ref_pkt);
-
+ // ref_pkt = new();
+  //got_pkt=new();
 //Section S7: Wait for packet from Outnput Monitor
 mbx_out.get(got_pkt);
 
@@ -37,7 +39,7 @@ total_pkts_recvd++;
 $display("[Scoreboard] Packet %0d received at time=%0t",total_pkts_recvd,$time); 
 
 //Section S9: Compare expected packet with received packet from DUT
-  if (ref_pkt.cmp(got_pkt) )
+  if (ref_pkt.cmp_run(got_pkt) )
 begin
     //Section S10: Increment m_matches count if packet Matches
 	m_matched++;

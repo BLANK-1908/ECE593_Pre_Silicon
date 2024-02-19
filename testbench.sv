@@ -1,2 +1,3 @@
-`include "tb.sv"
-`include "top.sv"
+
+`include "N:/Desktop/Cache/tb.sv" //add your own file directory
+`include "N:/Desktop/Cache/top.sv"
