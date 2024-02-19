@@ -1,6 +1,7 @@
 //Section T1 : Include environment classes
 `include "environment.sv"
-
+import filepackage::*;
+//`include "packet.sv"
 //Section T2 : Define test class
 class base_test;
 
@@ -27,9 +28,11 @@ endfunction
 //Section T7: Build Verification environment and connect them.
 function void build();
 //Section T7.1: Decide number of packets to generate in generator
+  
 env = new(vif,vif_mon_in,vif_mon_out,no_of_pkts);
 //Section T7.1: Construct object for environment and connect interfaces
 env.build();
+  
 endfunction
 
 //Section T8: Define run method to start Verification environment.
@@ -43,3 +46,4 @@ env.run();
 $display("[Testcase] run ended at time=%0t",$time);
 endtask
 endclass
+
